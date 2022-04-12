@@ -1,11 +1,30 @@
+<!-- This is a standard landing page that allows you to either enter customer support view
+or employee based view -->
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Welcome to the Dealership</title>
+<style>
+	body {
+		padding: 80px;
+		background-color: gray;
+		display: flex;
+		height: 300px;
+		align-content: center;
+		justify-content: space-evenly;
+	}
+	button {
+		font-size: 6vw;
+		height: 200px;
+		width: 100%;
+		background-color: yellow;
+	}
+</style>
 </head>
 <body>
-	<h1>THIS IS THE WELCOME PAGE.</h1>
-	<h3>This will be updated/changed.</h3>
+	<a href="/customerView.html"><button type="button">Customer</button></a>
+	<a href="/employeeView.html"><button type="button">Employee</button></a>
 </body>
 </html>
