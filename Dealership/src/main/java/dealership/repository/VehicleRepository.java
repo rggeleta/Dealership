@@ -1,4 +1,4 @@
-package dealership.reposittory;
+package dealership.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
