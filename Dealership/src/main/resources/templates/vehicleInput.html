@@ -27,7 +27,7 @@
 </head>
 <body>
 	<h1>Add Vehicle</h1>
-	<form th:object="${newVehicle}" method="POST">
+	<form th:object="${newVehicle}" th:action="@{/update/{id}(id=${newVehicle.id})}" method="POST">
 		<table>
 			<tr>
 				<th>Make</th>

@@ -50,5 +50,16 @@ public class VehicleWebController {
 		return viewAllVehicles(model);
 	}
 	
+	@GetMapping("/edit/{id}")
+	public String showUpdateVehicle(@PathVariable("id") long id, Model model) {
+		Vehicle v = repo.findById(id).orElse(null);
+		model.addAttribute("newVehicle", v);
+		return "vehicleInput";
+	}
 	
+	@PostMapping("/update/{id}")
+	public String reviseVehicle(Vehicle v, Model model) {
+		repo.save(v);
+		return viewAllVehicles(model);
+	}
 }
