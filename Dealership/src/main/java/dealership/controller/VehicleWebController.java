@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import dealership.beans.Vehicle;
-import dealership.reposittory.VehicleRepository;
+import dealership.repository.VehicleRepository;
 
 /**
  * @author William Thomas, wdthomas2
