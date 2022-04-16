@@ -3,32 +3,41 @@ package dealership.beans;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+@Builder
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+
+@Table(name ="sales")
 public class SalesPerson {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
-	private int id;
-	@Column(name = "Emp Name")
-	private String name;
-	@Column(name = "Department")
-	private String department;
+	private long id;
+	@Column(name = "First Name", nullable = false)  //required
+	private String firstName;
+	
+	@Column(name = "Last Name", nullable = false)   // required
+	private String lastName;
+	
+	@Column(name = "Vehicle Name")   //if we don't provide column name jpa will provide as the field name name
+	private String  vehicleName;
 	
 	
-	public SalesPerson(int id, String name, String department) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.department = department;
-	}
+	
+	
 	
 	
 
