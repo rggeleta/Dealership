@@ -7,7 +7,6 @@ package dealership;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,13 +23,41 @@ class VehicleClassTest {
 
 
 	/**
+	 * Test Method for a No Args Constructor
+	 */
+	@Test
+	void testVehicleNoArgs() {
+		Vehicle test = new Vehicle();
+		assertEquals(0, test.getId());
+		assertNull(test.getMake());
+		assertNull(test.getModel());
+		assertNull(test.getColor());
+		assertEquals(0.0, test.getPrice());
+		assertFalse(test.isSold());
+	}
+	
+	/**
+	 * Test Method for an All Args Constructor
+	 */
+	
+	@Test
+	void testVehicleAllArgs() {
+		Vehicle test = new Vehicle(1, "Ford", "Focus", "Black", 24000.99, false);
+		assertEquals(1, test.getId());
+		assertEquals("Ford",test.getMake());
+		assertEquals("Focus", test.getModel());
+		assertEquals("Black", test.getColor());
+		assertEquals(24000.99, test.getPrice());
+		assertFalse(test.isSold());
+	}
+	/**
 	 * Test method for {@link dealership.beans.Vehicle#setMake(String)}.
 	 */
 	@Test
 	void testSetMake() {
 		Vehicle test = new Vehicle();
 		test.setMake("Ford");
-		Assertions.assertEquals("Ford", test.getMake());
+		assertEquals("Ford", test.getMake());
 	}
 
 	/**
@@ -40,7 +67,7 @@ class VehicleClassTest {
 	void testSetModel() {
 		Vehicle test = new Vehicle();
 		test.setModel("Acura");
-		Assertions.assertEquals("Acura", test.getModel());
+		assertEquals("Acura", test.getModel());
 	}
 
 	/**
@@ -50,7 +77,7 @@ class VehicleClassTest {
 	void testSetColor() {
 		Vehicle test = new Vehicle();
 		test.setColor("Blue");
-		Assertions.assertEquals("Blue", test.getColor());
+		assertEquals("Blue", test.getColor());
 	}
 
 	/**
@@ -60,7 +87,7 @@ class VehicleClassTest {
 	void testSetPrice() {
 		Vehicle test = new Vehicle();
 		test.setPrice(24000.99);
-		Assertions.assertEquals(24000.99, test.getPrice());
+		assertEquals(24000.99, test.getPrice());
 	}
 
 	/**
@@ -70,7 +97,7 @@ class VehicleClassTest {
 	void testSetSold() {
 		Vehicle test = new Vehicle();
 		test.setSold(true);
-		Assertions.assertTrue(test.isSold());
+		assertTrue(test.isSold());
 	}
 
 }
