@@ -28,6 +28,6 @@ public class Vehicle {
 	private String make;
 	private String model;
 	private String color;
-	private float price;
+	private double price;
 	private boolean sold;
 }
