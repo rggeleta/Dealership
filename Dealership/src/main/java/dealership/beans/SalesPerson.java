@@ -1,5 +1,7 @@
 package dealership.beans;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,9 +21,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@Table(name ="sales")
+
+@Table(name ="SalesPerson")
 public class SalesPerson {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
@@ -35,11 +37,29 @@ public class SalesPerson {
 	@Column(name = "Vehicle Name")   //if we don't provide column name jpa will provide as the field name name
 	private String  vehicleName;
 	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getVihicleName() {
+		return vehicleName;
+	}
+	public void setVihicleName(String vihicleName) {
+		this.vehicleName = vihicleName;
+	}
 	
-	
-	
-	
-	
-
 }
-
