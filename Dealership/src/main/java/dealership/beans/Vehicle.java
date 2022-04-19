@@ -6,7 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.ToString;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author William Thomas, wdthomas2
@@ -21,6 +23,8 @@ import lombok.Data;
 @Entity
 @Data
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class Vehicle {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -28,6 +32,6 @@ public class Vehicle {
 	private String make;
 	private String model;
 	private String color;
-	private float price;
+	private double price;
 	private boolean sold;
 }
