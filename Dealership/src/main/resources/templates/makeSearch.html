@@ -25,10 +25,20 @@
 		margin: auto;
 	}
 </style>
+<script>
+	function inputValid() {
+		if(document.makeSearchForm.make.value == ""){
+			alert("Please enter a Make to search");
+			document.makeSearchForm.make.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
 </head>
 <body>
 	<h1>Search by Make</h1>
-	<form action="#" th:object="${makeObject}" th:action="@{/byMake/{make}(make=${makeObject.make})}" method="post">
+	<form action="#" th:object="${makeObject}" th:action="@{/byMake/{make}(make=${makeObject.make})}" method="post" name="makeSearchForm" onsubmit="return inputValid()">
 		<table>
 			<tr>
 				<th>Make</th>
