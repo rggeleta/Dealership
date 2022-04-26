@@ -24,10 +24,35 @@
 		margin: auto;
 	}
 </style>
+<script>
+	function inputValid() {
+		if(document.vehicleForm.make.value == ""){
+			alert("Please enter the make of the car");
+			document.vehicleForm.make.focus();
+			return false;
+		}
+		if(document.vehicleForm.model.value == ""){
+			alert("Please enter the model of the car");
+			document.vehicleForm.model.focus();
+			return false;
+		}
+		if(document.vehicleForm.color.value == ""){
+			alert("Please enter the color of the car");
+			document.vehicleForm.color.focus();
+			return false;
+		}
+		if(document.vehicleForm.price.value == 0.0){
+			alert("Please enter the price of the car");
+			document.vehicleForm.price.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
 </head>
 <body>
 	<h1>Add Vehicle</h1>
-	<form th:object="${newVehicle}" th:action="@{/update/{id}(id=${newVehicle.id})}" method="POST">
+	<form th:object="${newVehicle}" th:action="@{/update/{id}(id=${newVehicle.id})}" method="POST" name="vehicleForm" onsubmit="return inputValid()">
 		<table>
 			<tr>
 				<th>Make</th>

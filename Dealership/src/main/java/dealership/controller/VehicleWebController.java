@@ -1,5 +1,7 @@
 package dealership.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -62,4 +64,22 @@ public class VehicleWebController {
 		repo.save(v);
 		return viewAllVehicles(model);
 	}
+	
+	//Queries by details
+	@GetMapping("/makeSearch")
+	public String byMakeSearch(String make, Model model) {
+		if (repo.findAll().isEmpty()) {
+			return addNewVehicle(model);
+		}
+		Vehicle v = new Vehicle();
+		model.addAttribute("makeObject", v);
+		return "makeSearch";
+	}
+	
+	@PostMapping("/byMake")
+	public String byMake(@ModelAttribute Vehicle v, Model model) {
+			model.addAttribute("vehicles", repo.findAllByMakeIgnoreCase(v.getMake()));
+			return "vehicleResults";
+	}
+		
 }

@@ -24,10 +24,26 @@
 		margin: auto;
 	}
 </style>
+<script>
+	
+	function inputValid() {
+		if(document.customerForm.FirstName.value == ""){
+			alert("Please enter your First Name");
+			document.customerForm.FirstName.focus();
+			return false;
+		}
+		if(document.customerForm.LastName.value == ""){
+			alert("Please enter your Last Name");
+			document.customerForm.LastName.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
 </head>
 <body>
 	<h1>Add Customer</h1>
-	<form th:object="${newCustomer}" method="POST">
+	<form th:object="${newCustomer}" method="POST" name="customerForm" onsubmit="return inputValid()">
 		<table>
 			<tr>
 				<th>First Name</th>
