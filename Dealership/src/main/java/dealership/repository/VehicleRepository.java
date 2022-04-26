@@ -11,4 +11,6 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
 	List<Vehicle> findAllByMake(String make);
 	
 	List<Vehicle> findAllByMakeIgnoreCase(String make);
+	
+   
 }
