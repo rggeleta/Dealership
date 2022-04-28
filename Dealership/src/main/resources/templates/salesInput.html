@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Sales</title>
+<style>
+	form {
+		border-bottom: 1px solid black;
+	}
+	body {
+		padding: 80px;
+		background-color: skyblue;
+		display: block;
+		height: 300px;
+		text-align: center;
+	}
+	table, th, td {
+		border: 1px solid black;
+		text-align: center;
+		border-collapse: separate;
+		background-color: lightgray;
+		padding: 2px;
+		color: navy;
+		margin: auto;
+	}
+</style>
+<script>
+
+	function inputValid() {
+		if(document.customerForm.FirstName.value == ""){
+			alert("Please enter your First Name");
+			document.customerForm.FirstName.focus();
+			return false;
+		}
+		if(document.customerForm.LastName.value == ""){
+			alert("Please enter your Last Name");
+			document.customerForm.LastName.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+<body>
+	<h1>Add Sales</h1>
+	<form th:object="${newSales}" th:action="@{/update/{id}(id=${newSales.id})}" method="POST">
+		<table>
+			<tr>
+				<th>firstName</th>
+				<th>lastName</th>
+				<th>vehicleName</th>
+
+			</tr>
+			<tr>
+				<td><input name="firstName" type="text" size="20" th:field="*{firstName}"></td>
+				<td><input name="lastName" type="text" size="20" th:field="*{lastName}"></td>
+				<td><input name="vehicleName" type="text" size="20" th:field="*{vehicleName}"></td>
+
+			</tr>
+		</table>
+		<br>
+		<input name="submit" type="submit" value="Submit">
+		<p></p>
+	</form>
+	<br>
+	<a href="/viewSales"><button>View Sales</button></a>
+	<br><br>
+	<a href="/index.html"><button>Home</button></a>
+</body>
+</html>
