@@ -24,6 +24,22 @@
 		margin: auto;
 	}
 </style>
+<script>
+	
+	function inputValid() {
+		if(document.customerForm.FirstName.value == ""){
+			alert("Please enter your First Name");
+			document.customerForm.FirstName.focus();
+			return false;
+		}
+		if(document.customerForm.LastName.value == ""){
+			alert("Please enter your Last Name");
+			document.customerForm.LastName.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
 </head>
 <body>
 	<h1>Add Sales</h1>

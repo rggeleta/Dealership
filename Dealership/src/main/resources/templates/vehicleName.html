@@ -6,7 +6,7 @@
 </head>
 <body>                                                                   
 <h1>Search by vehicle Name</h1>
-	<form action="#" th:object="${makeObject}" th:action="@{/byMake/{make}(make=${makeObject.make})}" method="post" name="makeSearchForm" onsubmit="return inputValid()">
+	<form action="#" th:object="${vehicleNameObject}" th:action="@{/byVehicleName/{vehicleName}(make=${vehicleNameObject.make})}" method="post" name="vehicleNameSearchForm" onsubmit="return inputValid()">
 		<table>
 			<tr>
 				<th>Vehicle Name</th>
@@ -20,8 +20,9 @@
 		<input name="submit" type="submit" value="Search By Name">
 	</form>
 	<br>
-	<a href="/vehicleResults"><button>View Sales</button></a>
+	<a href="/viewVehicle"><button>View Sales</button></a>
 	<br><br>
 	<a href="/index.html"><button>Home</button></a>
+	
 </body>
 </html>

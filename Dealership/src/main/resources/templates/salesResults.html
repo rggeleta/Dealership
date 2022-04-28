@@ -20,14 +20,14 @@
 				<td th:text="${currentSales.firstName}"></td>
 				<td th:text="${currentSales.lastName}"></td>
 				<td th:text="${currentSales.vehicleName}"></td>
-				<td><a th:href="@{/edit/{id}(id=${currentVehicle.id})}">Edit</a></td>
+				<td><a th:href="@{/edit/{id}(id=${currentsales.id})}">Edit</a></td>
 				<td><a th:href="@{/deleteSales/{id}(id=${currentSales.id})}">Delete</a></td>
 			</tr>
 		</table>
 	</form>
 	<br>
 
-	<a href="/salesInput"><button>Add Sales</button></a>
+		<a href="/inputSales"><button>Add Sales</button></a>
 	<a href="/index.html"><button>Home</button></a>
 
 </body>
