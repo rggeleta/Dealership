@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+<style>	
+	a:hover {
+		background-color: yellow;
+	}
+	body {
+		padding: 80px;
+		background-color: skyblue;
+		display: block;
+		height: 300px;
+		text-align: center;
+	}
+	table, th, td {
+		border: 1px solid black;
+		text-align: center;
+		border-collapse: separate;
+		font-weight: bold;
+		padding: 2px;
+		color: navy;
+		margin: auto;
+		width: 80vw;
+	}
+	tr:nth-of-type(even) {
+		background-color: silver;
+	}
+	tr:nth-of-type(odd) {
+		background-color: lightgray;
+	}
+</style>
+<meta charset="ISO-8859-1">
+<title>Customer List</title>
+</head>
+<body>
+	<form th:object="${customer}" th:action="@{/updateCustomer/{id}(id=${customer.id})}" method="POST">
+	
+		<select th:field="*{firstName}">
+			<th:block th:each="currentCustomer : ${customer}">
+				<option th:text="${currentCustomer.firstName}"th:value="${currentCustomer.firstName}"/>
+			</th:block>
+		</select>
+		<select th:field="*{lastName}">
+			<th:block th:each="currentCustomer : ${customer}">
+				<option th:text="${currentCustomer.lastName}"th:value="${currentCustomer.lastName}"/>
+			</th:block>
+		</select>
+		
+		<select th:field="*{vehicles}">
+			<th:block th:each="currentVehicle : ${vehicles}">
+					<option th:text="${currentVehicle.toString}"th:value="${currentVehicle.id}"/>
+			</th:block>
+		</select>
+	<input name="submit" type="submit" value="Submit">
+	</form>
+	<br>
+	<a href="/inputCustomer"><button>Add Customer</button></a>
+	<a href="/index.html"><button>Home</button></a>
+</body>
+</html>
