@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Sales</title>
+<title>Add Vehicle To Inventory</title>
 <style>
 	form {
 		border-bottom: 1px solid black;
@@ -25,16 +25,25 @@
 	}
 </style>
 <script>
-	
 	function inputValid() {
-		if(document.customerForm.FirstName.value == ""){
-			alert("Please enter your First Name");
-			document.customerForm.FirstName.focus();
+		if(document.vehicleForm.make.value == ""){
+			alert("Please enter the make of the car");
+			document.vehicleForm.make.focus();
 			return false;
 		}
-		if(document.customerForm.LastName.value == ""){
-			alert("Please enter your Last Name");
-			document.customerForm.LastName.focus();
+		if(document.vehicleForm.model.value == ""){
+			alert("Please enter the model of the car");
+			document.vehicleForm.model.focus();
+			return false;
+		}
+		if(document.vehicleForm.color.value == ""){
+			alert("Please enter the color of the car");
+			document.vehicleForm.color.focus();
+			return false;
+		}
+		if(document.vehicleForm.price.value == 0.0){
+			alert("Please enter the price of the car");
+			document.vehicleForm.price.focus();
 			return false;
 		}
 		return true;
@@ -42,20 +51,20 @@
 </script>
 </head>
 <body>
-	<h1>Add Sales</h1>
-	<form th:object="${newSales}" th:action="@{/update/{id}(id=${newSales.id})}" method="POST">
+	<h1>Add Vehicle</h1>
+	<form th:object="${newVehicle}" th:action="@{/update/{id}(id=${newVehicle.id})}" method="POST" name="vehicleForm" onsubmit="return inputValid()">
 		<table>
 			<tr>
-				<th>firstName</th>
-				<th>lastName</th>
-				<th>vehicleName</th>
-				
+				<th>Make</th>
+				<th>Model</th>
+				<th>Color</th>
+				<th>Price</th>
 			</tr>
 			<tr>
-				<td><input name="firstName" type="text" size="20" th:field="*{firstName}"></td>
-				<td><input name="lastName" type="text" size="20" th:field="*{lastName}"></td>
-				<td><input name="vehicleName" type="text" size="20" th:field="*{vehicleName}"></td>
-				
+				<td><input name="make" type="text" size="20" th:field="*{make}"></td>
+				<td><input name="model" type="text" size="20" th:field="*{model}"></td>
+				<td><input name="color" type="text" size="20" th:field="*{color}"></td>
+				<td><input name="price" type="number" step="0.01" size="20" th:field="*{price}"></td>
 			</tr>
 		</table>
 		<br>
@@ -63,7 +72,7 @@
 		<p></p>
 	</form>
 	<br>
-	<a href="/viewSales"><button>View Sales</button></a>
+	<a href="/viewVehicles"><button>View Sales</button></a>
 	<br><br>
 	<a href="/index.html"><button>Home</button></a>
 </body>

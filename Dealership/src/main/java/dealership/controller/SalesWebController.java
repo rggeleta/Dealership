@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import dealership.beans.Sales;
+import dealership.beans.Vehicle;
 import dealership.repository.SalesRepository;
-
 
 @Controller
 public class SalesWebController {
-	
+
 	@Autowired
 	SalesRepository repo;
-	
+
 
 	@GetMapping("/viewSales")
 	public String viewAllSales(Model model) {
@@ -47,4 +47,23 @@ public class SalesWebController {
 		repo.delete(s);
 		return viewAllSales(model);
 	}
+	
+
+	//Queries by details
+	@GetMapping("/vehicleNameSearch")
+	public String byVehicleNameSearch(String vehicleName, Model model) {
+		if (repo.findAll().isEmpty()) {
+			return addNewSales(model);
+		}
+		Sales s = new Sales();
+		model.addAttribute("vehicleNameObject", s);
+		return "vehicleNameSearch";
+	}
+	
+	@PostMapping("/byVehicleName")
+	public String byVehicleName(@ModelAttribute Sales s, Model model) {
+			model.addAttribute("sales", repo.findAllByVehicleNameIgnoreCase(s.getVehicleName()));
+			return "salesResults";
+	}
+		
 }
