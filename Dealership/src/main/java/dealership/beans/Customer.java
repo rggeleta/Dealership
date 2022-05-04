@@ -1,12 +1,9 @@
 package dealership.beans;
 
-import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * @author William Thomas, wdthomas2
- * CIS175 - Spring 2022
- * Apr 11, 2022
- */
+import javax.persistence.*;
 
 @Entity
 @Table(name="dealership")
@@ -18,6 +15,9 @@ public class Customer {
 	private String firstName;
 	@Column(name = "LastName")
 	private String lastName;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn( name = "car_key", referencedColumnName = "id")
+	List<Vehicle> vehicles = new ArrayList<>();
 	
 	public Customer() {
 		super();
@@ -34,7 +34,13 @@ public class Customer {
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
-
+	
+	public List<Vehicle> getVehicles() {
+		return vehicles;
+	}
+	public void setVehicles(List<Vehicle> vehicles) {
+		this.vehicles = vehicles;
+	}
 	public long getId() {
 		return id;
 	}
